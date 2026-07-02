@@ -20,8 +20,8 @@ export default function Recommendation({ preds }:RecommendationProps) {
         setLoading(true);
         setError(null);
 
-        const OPENAI_API_KEY = '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'; // Replace with your actual OpenAI API key
-        const OPENAI_API_URL = 'https://api.openai.com/v1/chat/completions'; // OpenAI Chat Completions API endpoint
+        const OPENAI_API_KEY = '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'; // Replace with your actual OpenAI API key
+        const OPENAI_API_URL = 'https://openrouter.ai/api/v1/chat/completions'; // OpenAI Chat Completions API endpoint
 
         const response = await fetch(OPENAI_API_URL, {
           method: 'POST',
@@ -30,7 +30,7 @@ export default function Recommendation({ preds }:RecommendationProps) {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            model: "gpt-5.4-mini",
+            model: "openai/gpt-4o",
             messages: [
               { role: "system", content: "Talk like a doctor." },
               { role: "user", content: `In 50 words, advise a type 2 diabetes patient with an HbA1c of ${preds} on lifestyle adjustments to stay healthier, focusing on exercise and meal planning.` }
