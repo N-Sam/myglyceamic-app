@@ -7,15 +7,21 @@ A mobile application that helps you predict your HbA1c change in the nextthree m
 ## Get started
 
 1. Install dependencies
+   ````
+   Install node js
+   ````
 
    ```bash
    npm install
+   ```
+   ```
+   npm install expo
    ```
 
 2. Start the app
 
    ```bash
-   npx expo start
+   npm start
    ```
 
 In the output, you'll find options to open the app in a
