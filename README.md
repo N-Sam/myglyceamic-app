@@ -1,23 +1,22 @@
-# Welcome to your Myglyceamic app 👋
+# Welcome to Myglyceamic app 👋
 
 ## THIS IS MY GLYCEAMIC APP
 
 A mobile application that helps you predict your HbA1c change in the nextthree months.
 
-## Get started
+## Get started on your PC
 
 1. Install dependencies
-   ````
-   Install node js
+   ````bash
+   Install node js from [https://nodejs.org/en]
    ````
 
    ```bash
+   git clone https://github.com/N-Sam/myglyceamic-app.git
+   ```
+   ```bash
    npm install
    ```
-   ```
-   npm install expo
-   ```
-
 2. Start the app
 
    ```bash
