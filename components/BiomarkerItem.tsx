@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-type MealItemProps = {
+type BiomarkerItemProps = {
   age: number;
   weight: number;
   insulin_sensitivity: number;
@@ -8,13 +8,13 @@ type MealItemProps = {
   hbA1c: number;
 };
 
-export default function MealItem({
+export default function BiomarkerItem({
   age,
   weight,
   insulin_sensitivity,
   carb_ratio,
   hbA1c,
-}: MealItemProps) {
+}: BiomarkerItemProps) {
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{age}</Text>
