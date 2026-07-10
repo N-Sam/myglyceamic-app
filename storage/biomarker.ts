@@ -27,3 +27,13 @@ export const addBiomarker = async (
   await AsyncStorage.setItem(BIOMARKER_KEY, JSON.stringify([newBiomarker, ...biomarkers]));
   return newBiomarker;
 };
+
+export const deleteBiomarker = async (id: string): Promise<void> => {
+  const biomarkers = await getBiomarkers();
+  const filtered = biomarkers.filter((biomarker) => biomarker.id !== id);
+  await AsyncStorage.setItem(BIOMARKER_KEY, JSON.stringify(filtered));
+};
+
+export const clearAllBiomarkers = async (): Promise<void> => {
+  await AsyncStorage.removeItem(BIOMARKER_KEY);
+};

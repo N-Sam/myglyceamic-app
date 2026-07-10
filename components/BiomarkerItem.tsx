@@ -1,27 +1,46 @@
-import { StyleSheet, Text, View } from 'react-native';
+import {Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { deleteBiomarker } from '@/storage/biomarker';
+import { colors } from '@/styles/global';
 
 type BiomarkerItemProps = {
+  id: string;
   age: number;
   weight: number;
   insulin_sensitivity: number;
   carb_ratio: number;
   hbA1c: number;
+  onDelete:() => void;
 };
 
 export default function BiomarkerItem({
+  id,
   age,
   weight,
   insulin_sensitivity,
   carb_ratio,
   hbA1c,
+  onDelete,
 }: BiomarkerItemProps) {
+    const handleLongPress = () => {
+    Alert.alert('Delete Meal', `Are you sure you want to delete the biomarker when your were weighing "${weight}"?`, [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Delete',
+        style: 'destructive',
+        onPress: async () => {
+          await deleteBiomarker(id);
+          onDelete();
+        },
+      },
+    ]);
+  };
   return (
-    <View style={styles.container}>
-      <Text style={styles.name}>{age}</Text>
+    <TouchableOpacity style={styles.container} onLongPress={handleLongPress}>
+      <Text style={styles.name}>{id}</Text>
       <Text style={styles.macros}>
-        {weight} kg {insulin_sensitivity}mg/dL {carb_ratio}g/unit {hbA1c}%
+        {age}years {weight} kg {insulin_sensitivity}mg/dL {carb_ratio}g/unit {hbA1c}%
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 
