@@ -3,25 +3,13 @@
     "version": ">= 20.1.0",
     "appVersionSource": "remote"
   },
-  // "build": {
-  //   "development": {
-  //     "developmentClient": true,
-  //     "distribution": "internal"
-  //   },
-  //   "preview": {
-  //     "distribution": "internal"
-  //   },
-  //   "production": {
-  //     "autoIncrement": true
-  //   }
-  // },
-
   "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
     "preview": {
-      "distribution": "internal",
-      "android": {
-        "buildType": "apk"
-      }
+      "distribution": "internal"
     },
     "production": {
       "autoIncrement": true
