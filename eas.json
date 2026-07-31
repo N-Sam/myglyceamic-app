@@ -4,9 +4,6 @@
     "appVersionSource": "remote"
   },
   // 
-  "devDependencies": {
-    "@react-native-community/cli": "latest"
-  },
   "build": {
     "preview": {
       "distribution": "internal",
