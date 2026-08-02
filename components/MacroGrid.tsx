@@ -51,11 +51,11 @@ export default function MacroGrid({ biomarkers }: MacroGridProps) {
 
   return (
     <View style={styles.grid}>
-      <MacroCard label='Age' value={`${data.age} years`} goal='25' color='#6bcb77' />
-      <MacroCard label='Weight' value={`${data.weight} kg`} goal='60' color='#ff6b6b' />
-      <MacroCard label='Insulin_sensitivity' value={`${data.insulin_sensitivity} mg/dL`} goal='12' color='#4ecdc4' />
-      <MacroCard label='Carb_ratio' value={`${data.carb_ratio} g/uint`} goal='10' color='#ffd93d' />
-      <MacroCard label='Current HbA1c' value={`${data.hbA1c} %`} goal='5.5' color='#f50c2f' />
+      <MacroCard label='Age' value={`${data.age?? 0} years`} goal='25' color='#6bcb77' />
+      <MacroCard label='Weight' value={`${data.weight?? 0} kg`} goal='60' color='#ff6b6b' />
+      <MacroCard label='Insulin_sensitivity' value={`${data.insulin_sensitivity?? 0} mg/dL`} goal='12' color='#4ecdc4' />
+      <MacroCard label='Carb_ratio' value={`${data.carb_ratio?? 0} g/uint`} goal='10' color='#ffd93d' />
+      <MacroCard label='Current HbA1c' value={`${data.hbA1c?? 0} %`} goal='5.5' color='#f50c2f' />
       
       <MacroCard 
         label='Predicted HbA1c' 

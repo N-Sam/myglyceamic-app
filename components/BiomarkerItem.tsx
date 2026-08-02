@@ -38,7 +38,7 @@ export default function BiomarkerItem({
     <TouchableOpacity style={styles.container} onLongPress={handleLongPress}>
       <Text style={styles.name}>{id}</Text>
       <Text style={styles.macros}>
-        {age}years {weight} kg {insulin_sensitivity}mg/dL {carb_ratio}g/unit {hbA1c}%
+        {age ?? 0}years {weight ?? 0} kg {insulin_sensitivity ?? 0}mg/dL {carb_ratio ?? 0}g/unit {hbA1c ?? 0}%
       </Text>
     </TouchableOpacity>
   );
