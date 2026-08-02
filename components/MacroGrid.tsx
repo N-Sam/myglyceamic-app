@@ -51,16 +51,16 @@ export default function MacroGrid({ biomarkers }: MacroGridProps) {
 
   return (
     <View style={styles.grid}>
-      <MacroCard label='Age' value={`${data.age} years`} goal='' color='#6bcb77' />
-      <MacroCard label='Weight' value={`${data.weight} kg`} goal='' color='#ff6b6b' />
-      <MacroCard label='Insulin_sensitivity' value={`${data.insulin_sensitivity} mg/dL`} goal='' color='#4ecdc4' />
-      <MacroCard label='Carb_ratio' value={`${data.carb_ratio} g/uint`} goal='' color='#ffd93d' />
-      <MacroCard label='Current HbA1c' value={`${data.hbA1c} %`} goal='' color='#f50c2f' />
+      <MacroCard label='Age' value={`${data.age} years`} goal='25' color='#6bcb77' />
+      <MacroCard label='Weight' value={`${data.weight} kg`} goal='60' color='#ff6b6b' />
+      <MacroCard label='Insulin_sensitivity' value={`${data.insulin_sensitivity} mg/dL`} goal='12' color='#4ecdc4' />
+      <MacroCard label='Carb_ratio' value={`${data.carb_ratio} g/uint`} goal='10' color='#ffd93d' />
+      <MacroCard label='Current HbA1c' value={`${data.hbA1c} %`} goal='5.5' color='#f50c2f' />
       
       <MacroCard 
         label='Predicted HbA1c' 
         value={loading ? 'Calculating...' : `${prediction?? '--'} %`} 
-        goal='' 
+        goal='6.2' 
         color='#b41986' 
       />
       <view style={styles.isolatedComponent}>
