@@ -1,4 +1,5 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+//import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from 'expo-sqlite/kv-store';
 
 export type Biomarker = {
   id: string;
