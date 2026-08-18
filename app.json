@@ -22,7 +22,10 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.samuel_nyeko.myglycaemic"
+      "package": "com.samuel_nyeko.myglycaemic",
+      "permissions": [
+        "android.permissions.INTERNET"
+      ]
     },
     "web": {
       "output": "static",
