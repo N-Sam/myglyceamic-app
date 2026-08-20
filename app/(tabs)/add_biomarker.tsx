@@ -52,6 +52,8 @@ export default function AddMealScreen() {
 
       <TextInput
         style={styles.input}
+        autoCorrect={false}
+        spellCheck={false}
         placeholder='Age?'
         placeholderTextColor={colors.textSecondary}
         keyboardType='numeric'
@@ -60,6 +62,8 @@ export default function AddMealScreen() {
       />
       <TextInput
         style={styles.input}
+        autoCorrect={false}
+        spellCheck={false}
         placeholder='weight?'
         placeholderTextColor={colors.textSecondary}
         keyboardType='numeric'
@@ -68,6 +72,8 @@ export default function AddMealScreen() {
       />
       <TextInput
           style={[styles.input, styles.rowInput]}
+          autoCorrect={false}
+          spellCheck={false}
           placeholder='Insulin_sensitivity?'
           placeholderTextColor={colors.textSecondary}
           keyboardType='numeric'
@@ -76,6 +82,8 @@ export default function AddMealScreen() {
         />
         <TextInput
           style={[styles.input, styles.rowInput]}
+          autoCorrect={false}
+          spellCheck={false}
           placeholder='Carb_ratio?'
           placeholderTextColor={colors.textSecondary}
           keyboardType='numeric'
@@ -84,6 +92,8 @@ export default function AddMealScreen() {
         />
         <TextInput
           style={[styles.input, styles.rowInput]}
+          autoCorrect={false}
+          spellCheck={false}
           placeholder='Current hbA1c?'
           placeholderTextColor={colors.textSecondary}
           keyboardType='numeric'
