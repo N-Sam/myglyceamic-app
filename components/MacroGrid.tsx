@@ -95,12 +95,15 @@ const styles = StyleSheet.create({
   },
   isolatedComponent: {
     position: 'absolute', // Breaks out of the grid layout flow
+    flex: 1,
     top: 400,              // Positions 400px from the top of the parent container
-    left: 20,             // Positions 20px from the left of the parent container
-    right: 100,            // Stretches across to 20px from the right
-    backgroundColor: 'rgba(6, 2, 34, 0.9)',
-    padding: 15,
+    alignItems: 'center',
+    justifyContent: 'center',            
+    backgroundColor: '#f0f0f0',
+    padding: 16,
+    margin: 16,
     borderRadius: 8,
     zIndex: 1,            // Ensures it renders on top of the grid items
+      
   },
 });
