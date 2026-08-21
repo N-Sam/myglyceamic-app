@@ -20,10 +20,11 @@ export default function Recommendation({ preds }:RecommendationProps) {
         setLoading(true);
         setError(null);
 
-        const OPENAI_API_KEY = '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'; // Replace with your actual OpenAI API key
-        const OPENAI_API_URL = 'https://openrouter.ai/api/v1/chat/completions'; // OpenAI Chat Completions API endpoint
-
-        const response = await fetch(OPENAI_API_URL, {
+        // const OPENAI_API_KEY = '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'; // Replace with your actual OpenAI API key
+        // const OPENAI_API_URL = 'https://openrouter.ai/api/v1/chat/completions'; // OpenAI Chat Completions API endpoint
+        const OPENAI_API_KEY = process.env.EXPO_PUBLIC_OPENAI_API_KEY;
+        const OPEN_API_URL = process.env.EXPO_PUBLIC_OPENAI_API_URL;
+        const response = await fetch(`${OPEN_API_URL}`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${OPENAI_API_KEY}`,

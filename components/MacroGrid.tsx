@@ -22,29 +22,46 @@ export default function MacroGrid({ biomarkers }: MacroGridProps) {
   }, [data]);
 
   const fetchPrediction = async () => {
-    setLoading(true);
-    try {
-      let response = await fetch('https://predicting-hba1c-api.onrender.com/predict', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          age: Number(data.age),
-          weight: Number(data.weight),
-          insulin_sensitivity: Number(data.insulin_sensitivity),
-          carb_ratio: Number(data.carb_ratio),
-        } ),
-      });
+  setLoading(true);
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 15000); // 15s timeout
+  const API_URL = process.env.EXPO_PUBLIC_API_URL
 
-      const result = await response.json();
-      // Assuming the API returns an object like { pred: 5.7 }
-      setPrediction(result.hbA1c.toFixed(2));
-    } catch (error) {
-      alert(`${error}Error fetching HbA1c prediction:`);
-    } finally {
-      setLoading(false);
+  try {
+    const response = await fetch(`${API_URL}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        age: Number(data.age),
+        weight: Number(data.weight),
+        insulin_sensitivity: Number(data.insulin_sensitivity),
+        carb_ratio: Number(data.carb_ratio),
+      }),
+      signal: controller.signal,
+    });
+
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      throw new Error(`Server responded with ${response.status}`);
     }
+
+    const result = await response.json();
+    if (result.hbA1c === undefined) {
+      throw new Error('Unexpected response shape: ' + JSON.stringify(result));
+    }
+    setPrediction(result.hbA1c.toFixed(2));
+  } catch (error: unknown) {
+    clearTimeout(timeoutId);
+    const message = error instanceof Error ? error.message : String(error);
+    if (error instanceof DOMException && error.name === 'AbortError') {
+      alert('Request timed out. The server may be waking up — please try again in a moment.');
+      } else {
+        alert(`Error fetching HbA1c prediction: ${message}`);
+        }
+  } finally {
+    setLoading(false);
+  }
   };
 
   if (!data) return null;
@@ -63,9 +80,9 @@ export default function MacroGrid({ biomarkers }: MacroGridProps) {
         goal='6.2' 
         color='#b41986' 
       />
-      <view style={styles.isolatedComponent}>
+      <View style={styles.isolatedComponent}>
         <Recommendation  preds={prediction?? 0}/>
-      </view>      
+      </View>      
     </View>
   );
 }
