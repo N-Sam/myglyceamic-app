@@ -24,7 +24,7 @@ export default function MacroGrid({ biomarkers }: MacroGridProps) {
   const fetchPrediction = async () => {
   setLoading(true);
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 15000); // 15s timeout
+  const timeoutId = setTimeout(() => controller.abort(), 60000); // 60s timeout
   const API_URL = process.env.EXPO_PUBLIC_API_URL
 
   try {
@@ -55,9 +55,9 @@ export default function MacroGrid({ biomarkers }: MacroGridProps) {
     clearTimeout(timeoutId);
     const message = error instanceof Error ? error.message : String(error);
     if (error instanceof DOMException && error.name === 'AbortError') {
-      alert('Request timed out. The server may be waking up — please try again in a moment.');
+      alert('Waking up the server, this can take some seconds.');
       } else {
-        alert(`Error fetching HbA1c prediction: ${message}`);
+        alert(`Waking up server, this may take up to a minute on first request...: ${message}`);
         }
   } finally {
     setLoading(false);
@@ -97,11 +97,12 @@ const styles = StyleSheet.create({
     position: 'absolute', // Breaks out of the grid layout flow
     flexBasis: 0,
     top: 400,              // Positions 400px from the top of the parent container
+    left: 16,
+    right: 16, 
     alignItems: 'center',
     justifyContent: 'center',            
     backgroundColor: '#f0f0f0',
     padding: 16,
-    margin: 16,
     borderRadius: 8,
     zIndex: 1,            // Ensures it renders on top of the grid items
       
