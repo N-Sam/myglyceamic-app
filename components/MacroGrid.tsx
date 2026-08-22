@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   },
   isolatedComponent: {
     position: 'absolute', // Breaks out of the grid layout flow
-    flex: 1,
+    flexBasis: 0,
     top: 400,              // Positions 400px from the top of the parent container
     alignItems: 'center',
     justifyContent: 'center',            
